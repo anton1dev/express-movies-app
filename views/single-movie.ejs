@@ -1,69 +1,166 @@
-<% include head %>
-</head>
-<body>
-	<% include navbar %>
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-8 col-sm-offset-2 text-center">
-				<h1 class="single-movie-title">
-          <%= parsedData.title %>
-				</h1>
-				
-				<h3 class="single-movie-title">
-          <%= parsedData.tagline %>
-				</h3>
-				
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+      crossorigin="anonymous"
+    />
 
-				<a href="<%= parsedData.homepage %>">
-          <img src="<%= imageBaseUrl+parsedData.poster_path %>" />
-        </a>
-				
-				<p class="overview-header">Movie Synopsis: 
-          <span class="single-movie-overview">
-					  <%= parsedData.overview %>
-				</span>
-      </p>
-			</div>
-		</div>
-	</div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<!-- Button trigger modal -->
-<div class="col-sm-12 text-center">
-	<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-		More Details
-	</button>
-</div>
+    <link
+      href="https://fonts.googleapis.com/css?family=Metamorphous|Swanky+and+Moo+Moo"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="/stylesheets/style.css"
+    />
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a
+            class="navbar-brand"
+            href="/"
+          >
+            Small IMDB App</a
+          >
+        </div>
 
-<!-- Modal -->
-<div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Movie Information</h4>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <form
+              action="/search?source=hp"
+              method="post"
+              id="search-form"
+              class="form-inline"
+            >
+              <div class="form-group">
+                <select
+                  name="cat"
+                  class="form-control"
+                  id="cat"
+                >
+                  <option value="movie">Movie Title</option>
+                  <option value="person">Actor</option>
+                </select>
+              </div>
+
+              <input
+                type="text"
+                id="movie"
+                placeholder="Search"
+                name="movieSearch"
+              />
+
+              <input
+                type="submit"
+                class="btn btn-primary"
+              />
+            </form>
+          </li>
+        </ul>
       </div>
-      <div class="modal-body">
-        <a href="https://www.imdb.com/title<%= parsedData.imdb_id %>" target='_blank'>
-          IMDB link
-        </a>
-        <p><%= parsedData.budget %></p>
-        <p><%= parsedData.revenue %></p>
-        <p><%= parsedData.release_date %></p>
-        <p><%= parsedData.production_companies[0].name %></p>
+    </nav>
 
-        Budget
-        Revenue
-        Release Date
-        Production Companies
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2 text-center">
+          <h1 class="single-movie-title"><%= parsedData.title %></h1>
 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+          <h3 class="single-movie-title"><%= parsedData.tagline %></h3>
+
+          <a href="<%= parsedData.homepage %>">
+            <img src="<%= imageBaseUrl+parsedData.poster_path %>" />
+          </a>
+
+          <p class="overview-header">
+            Movie Synopsis:
+            <span class="single-movie-overview">
+              <%= parsedData.overview %>
+            </span>
+          </p>
+        </div>
       </div>
     </div>
-  </div>
-</div>
 
-</body>
+    <!-- Button trigger modal -->
+    <div class="col-sm-12 text-center">
+      <button
+        type="button"
+        class="btn btn-primary btn-lg"
+        data-toggle="modal"
+        data-target="#myModal"
+      >
+        More Details
+      </button>
+    </div>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="myModal"
+      role="dialog"
+      aria-labelledby="myModalLabel"
+    >
+      <div
+        class="modal-dialog"
+        role="document"
+      >
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4
+              class="modal-title"
+              id="myModalLabel"
+            >
+              Movie Information
+            </h4>
+          </div>
+          <div class="modal-body">
+            <a
+              href="https://www.imdb.com/title<%= parsedData.imdb_id %>"
+              target="_blank"
+            >
+              IMDB link
+            </a>
+            <p><%= parsedData.budget %></p>
+            <p><%= parsedData.revenue %></p>
+            <p><%= parsedData.release_date %></p>
+            <p><%= parsedData.production_companies[0].name %></p>
+
+            Budget Revenue Release Date Production Companies
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-default"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+            >
+              Save changes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
+

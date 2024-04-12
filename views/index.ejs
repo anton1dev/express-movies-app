@@ -2,10 +2,76 @@
 <html>
   <head>
     <title>Movie App</title>
-    <% include head %>
+    <link
+  rel="stylesheet"
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+  integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+  crossorigin="anonymous"
+/>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<link
+  href="https://fonts.googleapis.com/css?family=Metamorphous|Swanky+and+Moo+Moo"
+  rel="stylesheet"
+/>
+<link
+  rel="stylesheet"
+  href="/stylesheets/style.css"
+/>
+
   </head>
   <body>
-    <% include navbar %>
+    <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a
+        class="navbar-brand"
+        href="/"
+      >
+        Small IMDB App</a
+      >
+    </div>
+
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <form
+          action="/search?source=hp"
+          method="post"
+          id="search-form"
+          class="form-inline"
+        >
+          <div class="form-group">
+            <select
+              name="cat"
+              class="form-control"
+              id="cat"
+            >
+              <option value="movie">Movie Title</option>
+              <option value="person">Actor</option>
+            </select>
+          </div>
+
+          <input
+            type="text"
+            id="movie"
+            placeholder="Search"
+            name="movieSearch"
+          />
+
+          <input
+            type="submit"
+            class="btn btn-primary"
+          />
+        </form>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
 
     <div class="container">
       <div class="row">
