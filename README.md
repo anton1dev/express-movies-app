@@ -12,7 +12,7 @@ Enjoy!
 ## Used technologies 
 
 During development process, I've used several web-technologies:
-- `JavaScript` as well as the Best programming language for Web;
+- `JavaScript` as well as the main programming language for Web-development;
 - `Node.js` to develop a back-end application that can use a IMDB API;
 - `Express.js`, `Express Router`, `Helmet` and `Morgan`; 
 - `ESLint`, `Prettier`, `Husky` for best code-style;
@@ -32,7 +32,7 @@ To visit movie web-site, click a poster image again.
 ## Instructions
 
 If you want to open an app on your PC locally, just type: 
-- `npm i`;
+- `npm i`
 - `npm start`
 
 Also, you can use a deployed application. Generally, there is no need to run app locally.
