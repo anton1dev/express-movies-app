@@ -6,19 +6,23 @@
 		<div class="row">
 			<div class="col-sm-8 col-sm-offset-2 text-center">
 				<h1 class="single-movie-title">
-
+          <%= parsedData.title %>
 				</h1>
 				
 				<h3 class="single-movie-title">
-
+          <%= parsedData.tagline %>
 				</h3>
 				
 
-				<img src="" />
+				<a href="<%= parsedData.homepage %>">
+          <img src="<%= imageBaseUrl+parsedData.poster_path %>" />
+        </a>
 				
-				<p class="overview-header">Movie Synopsis: <span class="single-movie-overview">
-					
-				</span></p>
+				<p class="overview-header">Movie Synopsis: 
+          <span class="single-movie-overview">
+					  <%= parsedData.overview %>
+				</span>
+      </p>
 			</div>
 		</div>
 	</div>
@@ -31,7 +35,7 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -39,7 +43,18 @@
         <h4 class="modal-title" id="myModalLabel">Movie Information</h4>
       </div>
       <div class="modal-body">
+        <a href="https://www.imdb.com/title<%= parsedData.imdb_id %>" target='_blank'>
+          IMDB link
+        </a>
+        <p><%= parsedData.budget %></p>
+        <p><%= parsedData.revenue %></p>
+        <p><%= parsedData.release_date %></p>
+        <p><%= parsedData.production_companies[0].name %></p>
 
+        Budget
+        Revenue
+        Release Date
+        Production Companies
 
       </div>
       <div class="modal-footer">
