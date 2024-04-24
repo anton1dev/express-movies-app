@@ -1,6 +1,7 @@
 const createError = require("http-errors");
 const express = require("express");
 const path = require("path");
+const status = require('http-status');
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const helmet = require("helmet");
@@ -32,14 +33,14 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 
 app.use(function (req, res, next) {
-  next(createError(404));
+  next(createError(status.NOT_FOUND));
 });
 
 app.use(function (err, req, res, next) {
   res.locals.message = err.message;
   res.locals.error = req.app.get("env") === "development" ? err : {};
 
-  res.status(err.status || 500);
+  res.status(err.status || status.INTERNAL_SERVER_ERROR);
   res.render("error");
 });
 

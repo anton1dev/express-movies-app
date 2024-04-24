@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const request = require("request");
 
-const apiKey = "1fb720b97cc13e580c2c35e1138f90f8";
+const apiKey = process.env.API_KEY;
 
 const apiBaseUrl = "http://api.themoviedb.org/3";
 const nowPlayingUrl = `${apiBaseUrl}/movie/now_playing?api_key=${apiKey}`;
